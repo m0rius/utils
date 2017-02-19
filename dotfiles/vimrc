@@ -44,8 +44,8 @@ set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
+set laststatus=2        " Enable to have always status bar
 set cursorline
-set clipboard=unmamed
 
 "set hlsearch
 " Source a global configuration file if available
@@ -57,12 +57,22 @@ endif
 "=============
 
 " Indent & basic options
-set t_Co=256
+"set t_Co=256
 set number
 set expandtab
 set shiftwidth=4
 set softtabstop=4
 set autoindent
+
+" Color Theme
+"colorscheme 0x7A69_dark
+colorscheme spacegray
+let g:spacegray_underline_search = 1
+
+
+" Php function completion
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+set completeopt=longest,menuone
 
 " Load Pathogen
 execute pathogen#infect()
@@ -74,7 +84,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-" Remove arrow separator between groups
+"" Remove arrow separator between groups
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline#extensions#tabline#left_sep = ' '
@@ -82,10 +92,8 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = '|'
 
-
-" Syntastic options
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
+let g:vdebug_options = {}
+let g:vdebug_options["port"] = 9000
+"let g:vdebug_options["path_maps"] = {
+"\    "/resa": "/home/manu/dev/resa"
+"\}
